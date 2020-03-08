@@ -1,0 +1,41 @@
+#配置端口
+server:
+  port: 8001
+
+#配置mysql数据库
+spring:
+  #邮箱配置
+  mail:
+    host: smtp.qq.com
+    username: lzh421@qq.com
+    password: evalobmfjbfscbbb
+    default-encoding: UTF-8
+    port: 465
+    properties:
+      mail:
+        smtp:
+          auth: true
+          socketFactory:
+            class: javax.net.ssl.SSLSocketFactory
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1/mail_test?characterEncoding=utf-8&useSSL=false&serverTimezone=UTC&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true
+    username: root
+    password: 78773910
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 500MB
+  rabbitmq:
+    addresses: 127.0.0.1:5672
+    username: guest
+    password: guest
+    virtual-host: /
+    publisher-confirms: true #confirm模式
+    publisher-returns: true #return机制
+    template:
+      mandatory: true #与return机制结合配置次属性
+    connection-timeout: 5000
+
+mybatis:
+  mapper-locations : classpath:mapping/*.xml
